@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Охота на сердца</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            user-select: none;
+        }
+
+
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+
+        canvas {
+            display: block;
+        }
+
+
+        .screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+
+
+        .hidden {
+            display: none;
+        }
+
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+
+        button:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+
+
+        .stats {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.2em;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 5;
+        }
+
+
+        .instructions {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1em;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+<div id="gameContainer">
+    <div id="menuScreen" class="screen">
+        <h1>💘 Купидон 💘</h1>
+        <p>Стреляй в сердца! Фиолетовые: +1, Розовые: +5, Красные: -2</p>
+        <button id="playButton">Играть</button>
+    </div>
+
+
+    <div id="gameScreen" class="screen hidden">
+        <canvas id="gameCanvas"></canvas>
+        <div class="stats">
+            <div>Счет: <span id="score">0</span></div>
+            <div>Время: <span id="timer">60</span>с</div>
+        </div>
+        <div class="instructions">
+            💜 Фиолетовое: +1 очко<br>
+            💖 Розовое: +5 очков<br>
+            ❤️ Красное: -2 очка
+        </div>
+    </div>
+
+
+    <div id="gameOverScreen" class="screen hidden">
+        <h1>Игра окончена!</h1>
+        <p>Ваш счет: <span id="finalScore">0</span></p>
+        <button id="restartButton">Играть снова</button>
+        <button id="menuButton">В меню</button>
+    </div>
+</div>
+
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
